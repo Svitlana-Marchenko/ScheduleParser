@@ -13,7 +13,7 @@ Before running the project, make sure you have the following installed on your l
 1. Clone this repository to your local machine using Git:
 
    ```bash
-   git clone https://github.com/your-username/your-project.git](https://github.com/Svitlana-Marchenko/ScheduleParser.git
+   git clone https://github.com/Svitlana-Marchenko/ScheduleParser.git
    ```
    
 ## Running the Project
