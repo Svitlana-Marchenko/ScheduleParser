@@ -21,7 +21,7 @@ Before running the project, make sure you have the following installed on your l
 To run the project, you need to provide Excel files (`.xlsx`) for the parser. These files should be placed in the `resources` directory of the project.
 
 ## Using the Tester
-The project includes a Main class with a built-in tester. You can use the tester to process the test schedule files. Simply run the Main class, and it will execute the parser with the test files provided in the target directory.
+The project includes a Main class with a built-in tester. You can use the tester to process the test schedule files. Simply run the Main class, and it will execute the parser with the test files provided in the resources directory.
 
 ## Project Structure
 
