@@ -7,7 +7,7 @@ public enum WeekDay {
     TUESDAY("Вівторок"),
     WEDNESDAY("Середа"),
     THURSDAY("Четвер"),
-    FRIDAY("Пґятниця"),
+    FRIDAY("Пʼятниця"),
     SATURDAY("Субота");
 
     private final String day;
