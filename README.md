@@ -23,8 +23,44 @@ To run the project, you need to provide Excel files (`.xlsx`) for the parser. Th
 ## Using the Tester
 The project includes a Main class with a tester. You can use the tester to process the test schedule files. Simply run the Main class, and it will execute the parser with the test files provided in the resources directory.
 
-## Output JSON File
-After running the parser, the program will generate an output JSON file named `output.json`. This file contains the parsed schedule information.
+## Response Format (JSON File)
+After running the parser, the program will generate an output JSON file named `output.json`. This file contains the parsed schedule information about the faculty, specialization, subject name, year of studying, and a detailed schedule for each group..
+
+Here's an example of the response format:
+```json
+{
+   "faculty" : "Факультет інформатики",
+   "specialization" : "Інженерія програмного забезпечення",
+   "subjectName" : "Розробка користувацького інтерфейсу (UI/UX), ас. О.В. Бітаєва",
+   "yearOfStudying" : 3,
+   "groups" : {
+      "1.0" : [ {
+         "day" : "Четвер",
+         "time" : "15:00-16:20",
+         "room" : "Дистанційно",
+         "weeks" : "1-12"
+      } ],
+      "2.0" : [ {
+         "day" : "Четвер",
+         "time" : "16:30-17:50",
+         "room" : "Дистанційно",
+         "weeks" : "1-12"
+      } ],
+      "3.0" : [ {
+         "day" : "Четвер",
+         "time" : "18:00-19:20",
+         "room" : "Дистанційно",
+         "weeks" : "1-12"
+      } ],
+      "лекція" : [ {
+         "day" : "Четвер",
+         "time" : "13:30-14:50",
+         "room" : "Дистанційно",
+         "weeks" : "1-11"
+      } ]
+   }
+}
+```
 
 ## Project Structure
 
