@@ -72,7 +72,7 @@ If you encounter any issues or have trouble running the project, please check th
 
 - Ensure you have Java 17 or later installed.
 - Verify that Maven is installed and properly configured.
-- Double-check the presence and format of your Excel files in the `target` directory.
+- Double-check the presence and format of your Excel files in the `resorces` directory.
 - Review the project's dependencies and ensure they are correctly specified in the `pom.xml` file.
 
 For additional support, please contact the project maintainer.
