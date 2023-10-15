@@ -171,19 +171,19 @@ public class FileAnalysis {
 
                 if (schedule.containsKey(subject)) {
                     if (schedule.get(subject).getGroups().containsKey(group)) {
-                        schedule.get(subject).getGroups().get(group).getTime().add(slot);
+                        schedule.get(subject).getGroups().get(group).add(slot);
                     } else {
                         //todo change ab a
                         List<TimeSlot> ab = new ArrayList<>();
                         ab.add(slot);
-                        schedule.get(subject).getGroups().put(group, new GroupSchedule(group, ab));
+                        schedule.get(subject).getGroups().put(group, ab);
                     }
                 } else {
 
-                    HashMap<String, GroupSchedule> a = new HashMap<>();
+                    HashMap<String, List<TimeSlot>> a = new HashMap<>();
                     List<TimeSlot> ab = new ArrayList<>();
                     ab.add(slot);
-                    a.put(group, new GroupSchedule(group, ab));
+                    a.put(group, ab);
                     schedule.put(subject, new ClassSchedule(faculty, specialization, subject, year, a));
 
                 }

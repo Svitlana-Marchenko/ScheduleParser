@@ -10,9 +10,9 @@ public class ClassSchedule {
     private Specialization specialization;
     private String subjectName;
     private int yearOfStudying;
-    private Map<String, GroupSchedule> groups;
+    private Map<String, List<TimeSlot>> groups;
 
-    public ClassSchedule(Faculty faculty, Specialization specialization, String subjectName, int yearOfStudying, HashMap<String, GroupSchedule> groups) {
+    public ClassSchedule(Faculty faculty, Specialization specialization, String subjectName, int yearOfStudying, HashMap<String, List <TimeSlot>> groups) {
         this.faculty = faculty;
         this.specialization = specialization;
         this.subjectName = subjectName;
@@ -67,11 +67,11 @@ public class ClassSchedule {
         this.yearOfStudying = yearOfStudying;
     }
 
-    public Map<String, GroupSchedule> getGroups() {
+    public Map<String, List <TimeSlot>> getGroups() {
         return groups;
     }
 
-    public void setGroups(Map<String, GroupSchedule> groups) {
+    public void setGroups(Map<String, List <TimeSlot>> groups) {
         this.groups = groups;
     }
 

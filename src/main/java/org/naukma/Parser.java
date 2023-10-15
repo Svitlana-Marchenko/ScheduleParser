@@ -64,7 +64,7 @@ public class Parser {
     // Validate ClassSchedule object
     private static void validateFeClassSchedule(ClassSchedule cl, List<ClassSchedule> list) {
         String subject = cl.getSubjectName();
-        Map<String, GroupSchedule> groupMap = cl.getGroups();
+        Map<String, List <TimeSlot>> groupMap = cl.getGroups();
 
         for (String group : groupMap.keySet()) {
             boolean economic = fromEconomic(subject, group);
@@ -75,44 +75,44 @@ public class Parser {
             String vSubject = cleanSubjectFromFE(subject);
             String vGroup = cleanGroupFromFE(group);
 
-            List<TimeSlot> gr = groupMap.get(group).getTime();
+            List<TimeSlot> gr = groupMap.get(group);
 
             if (economic) {
                 if (list.contains(new ClassSchedule(Faculty.FACULTY_OF_ECONOMICS, Specialization.ECONOMICS, vSubject, cl.getYearOfStudying(), null))) {
-                    list.get(list.indexOf(new ClassSchedule(Faculty.FACULTY_OF_ECONOMICS, Specialization.ECONOMICS, vSubject, cl.getYearOfStudying(), null))).getGroups().put(vGroup, new GroupSchedule(vGroup, gr));
+                    list.get(list.indexOf(new ClassSchedule(Faculty.FACULTY_OF_ECONOMICS, Specialization.ECONOMICS, vSubject, cl.getYearOfStudying(), null))).getGroups().put(vGroup, gr);
                 } else {
-                    HashMap<String, GroupSchedule> a = new HashMap<>();
-                    a.put(vGroup, new GroupSchedule(vGroup, gr));
+                    HashMap<String, List<TimeSlot>> a = new HashMap<>();
+                    a.put(vGroup, gr);
                     list.add(new ClassSchedule(Faculty.FACULTY_OF_ECONOMICS, Specialization.ECONOMICS, vSubject, cl.getYearOfStudying(), a));
                 }
             }
             if (finance) {
                 if (list.contains(new ClassSchedule(Faculty.FACULTY_OF_ECONOMICS, Specialization.FINANCE_BANKING_AND_INSURANCE, vSubject, cl.getYearOfStudying(), null))) {
-                    list.get(list.indexOf(new ClassSchedule(Faculty.FACULTY_OF_ECONOMICS, Specialization.FINANCE_BANKING_AND_INSURANCE, vSubject, cl.getYearOfStudying(), null))).getGroups().put(vGroup, new GroupSchedule(vGroup, gr));
+                    list.get(list.indexOf(new ClassSchedule(Faculty.FACULTY_OF_ECONOMICS, Specialization.FINANCE_BANKING_AND_INSURANCE, vSubject, cl.getYearOfStudying(), null))).getGroups().put(vGroup, gr);
 
                 } else {
-                    HashMap<String, GroupSchedule> a = new HashMap<>();
-                     a.put(vGroup, new GroupSchedule(vGroup, gr));
+                    HashMap<String, List<TimeSlot>> a = new HashMap<>();
+                     a.put(vGroup, gr);
                     list.add(new ClassSchedule(Faculty.FACULTY_OF_ECONOMICS, Specialization.FINANCE_BANKING_AND_INSURANCE, vSubject, cl.getYearOfStudying(), a));
                 }
             }
             if (management) {
                 if (list.contains(new ClassSchedule(Faculty.FACULTY_OF_ECONOMICS, Specialization.MANAGEMENT, vSubject, cl.getYearOfStudying(), null))) {
-                    list.get(list.indexOf(new ClassSchedule(Faculty.FACULTY_OF_ECONOMICS, Specialization.MANAGEMENT, vSubject, cl.getYearOfStudying(), null))).getGroups().put(vGroup, new GroupSchedule(vGroup, gr));
+                    list.get(list.indexOf(new ClassSchedule(Faculty.FACULTY_OF_ECONOMICS, Specialization.MANAGEMENT, vSubject, cl.getYearOfStudying(), null))).getGroups().put(vGroup, gr);
 
                 } else {
-                    HashMap<String, GroupSchedule> a = new HashMap<>();
-                    a.put(vGroup, new GroupSchedule(vGroup, gr));
+                    HashMap<String, List<TimeSlot>> a = new HashMap<>();
+                    a.put(vGroup, gr);
                     list.add(new ClassSchedule(Faculty.FACULTY_OF_ECONOMICS, Specialization.MANAGEMENT, vSubject, cl.getYearOfStudying(), a));
                 }
             }
             if (marketing) {
                 if (list.contains(new ClassSchedule(Faculty.FACULTY_OF_ECONOMICS, Specialization.MARKETING, vSubject, cl.getYearOfStudying(), null))) {
-                     list.get(list.indexOf(new ClassSchedule(Faculty.FACULTY_OF_ECONOMICS, Specialization.MARKETING, vSubject, cl.getYearOfStudying(), null))).getGroups().put(vGroup, new GroupSchedule(vGroup, gr));
+                     list.get(list.indexOf(new ClassSchedule(Faculty.FACULTY_OF_ECONOMICS, Specialization.MARKETING, vSubject, cl.getYearOfStudying(), null))).getGroups().put(vGroup, gr);
 
                 } else {
-                    HashMap<String, GroupSchedule> a = new HashMap<>();
-                     a.put(vGroup, new GroupSchedule(vGroup, gr));
+                    HashMap<String, List<TimeSlot>> a = new HashMap<>();
+                     a.put(vGroup, gr);
                     list.add(new ClassSchedule(Faculty.FACULTY_OF_ECONOMICS, Specialization.MARKETING, vSubject, cl.getYearOfStudying(), a));
                 }
             }
@@ -186,10 +186,10 @@ public class Parser {
 
     // Clean the group name from FE-specific patterns
     private static String cleanGroupFromFE(String group) {
-        if (group.equals("Лекція") || group.equals("лекція"))
+        if (group.equals("Лекція") || group.equals("лекція")|| group.equals("лекція "))
             return group;
         else {
-            String regex = "ф\\+мар|ек\\+мен|мар\\+мен|е|ф";
+            String regex = "ф\\+мар|ек\\+мен|\\(марк, мен\\.\\)|мар\\+мен|е|ф";
             return group.replaceAll("\\n", "").replaceAll(regex, "").replaceAll("\\s+", "");
         }
     }
