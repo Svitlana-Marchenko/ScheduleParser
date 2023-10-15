@@ -1,7 +1,5 @@
 package org.naukma;
 
-import org.naukma.ScheduleClasses.ClassSchedule;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +16,11 @@ public class Main {
         //write schedule to json
         writeToJson(p.getClassSchedule(), "output.json");
 
-        //print schedule to console
+        //print schedule to console (uncomment to print set of ClassSchedule)
+        /*
         for (ClassSchedule schedule : p.getClassSchedule()) {
             System.out.println(schedule+"\n");
         }
-
-
+        */
     }
 }
