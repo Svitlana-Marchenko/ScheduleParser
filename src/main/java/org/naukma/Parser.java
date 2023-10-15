@@ -1,10 +1,11 @@
 package org.naukma;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.naukma.Enums.Faculty;
 import org.naukma.Enums.Specialization;
 import org.naukma.ScheduleClasses.ClassSchedule;
-import org.naukma.ScheduleClasses.GroupSchedule;
 import org.naukma.ScheduleClasses.TimeSlot;
 
 import java.io.File;
@@ -197,9 +198,12 @@ public class Parser {
     // Write class schedules to a JSON file
     public static void writeToJson(Set<ClassSchedule> classSchedules, String jsonFileName) {
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
         try {
-            objectMapper.writeValue(new File(jsonFileName), classSchedules);
+            ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
+            File jsonFile = new File(jsonFileName);
+            objectWriter.writeValue(jsonFile, classSchedules);
         } catch (IOException e) {
             e.printStackTrace();
         }

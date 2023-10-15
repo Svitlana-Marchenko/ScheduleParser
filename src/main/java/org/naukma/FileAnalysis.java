@@ -7,7 +7,6 @@ import org.naukma.Enums.Faculty;
 import org.naukma.Enums.Specialization;
 import org.naukma.Enums.WeekDay;
 import org.naukma.ScheduleClasses.ClassSchedule;
-import org.naukma.ScheduleClasses.GroupSchedule;
 import org.naukma.ScheduleClasses.TimeSlot;
 
 import java.io.IOException;
@@ -201,7 +200,7 @@ public class FileAnalysis {
         while (String.valueOf(row.getCell(1)).isEmpty() && !endOfFile);
         return row;
     }
-    //validate лекція .п
+    //validate лекція *п
     private static String validateFeLecture(String group) {
         if (group.matches("Лекція\\s*\\d{1}п"))
             return "Лекція";
